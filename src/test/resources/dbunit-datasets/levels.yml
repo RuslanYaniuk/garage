@@ -1,0 +1,18 @@
+level:
+- id: 1
+  number: 1
+  garage: 1
+
+- id: 2
+  number: 1
+  garage: 2
+- id: 3
+  number: 2
+  garage: 2
+- id: 4
+  number: 3
+  garage: 2
+
+- id: 5
+  number: 1
+  garage: 3

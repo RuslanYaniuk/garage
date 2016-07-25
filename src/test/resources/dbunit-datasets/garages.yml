@@ -1,0 +1,10 @@
+garage:
+- id: 1
+  number_of_levels: 1
+  lots_on_level: 50
+- id: 2
+  number_of_levels: 3
+  lots_on_level: 33
+- id: 3
+  number_of_levels: 1
+  lots_on_level: 1

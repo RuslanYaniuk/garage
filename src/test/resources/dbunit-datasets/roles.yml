@@ -1,5 +1,0 @@
-user_roles:
-- id: 1
-  role: "ROLE_USER"
-- id: 2
-  role: "ROLE_ADMIN"

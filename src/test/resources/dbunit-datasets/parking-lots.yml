@@ -1,0 +1,11 @@
+parking_lot:
+- id: 1
+  number: 5
+  garage: 2
+  level: 2
+  vehicle: 1
+- id: 2
+  number: 1
+  garage: 3
+  level: 5
+  vehicle: 2

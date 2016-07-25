@@ -1,0 +1,7 @@
+vehicle:
+- id: 1
+  license: "PL-3322445"
+  type: "CAR"
+- id: 2
+  license: "GR-1111111"
+  type: "MOTORCYCLE"
