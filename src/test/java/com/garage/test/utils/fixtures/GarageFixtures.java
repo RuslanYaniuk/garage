@@ -1,4 +1,4 @@
-package com.garage.test.utils;
+package com.garage.test.utils.fixtures;
 
 import com.garage.models.Garage;
 
@@ -26,7 +26,7 @@ public class GarageFixtures {
         return garage;
     }
 
-    public static Garage getFilledGarage() {
+    public static Garage getFullGarage() {
         Garage garage = new Garage(1, 1);
 
         garage.setId(3L);

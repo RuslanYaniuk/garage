@@ -64,4 +64,19 @@ public class Vehicle implements Serializable {
     public void setParkingLot(ParkingLot parkingLot) {
         this.parkingLot = parkingLot;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Vehicle vehicle = (Vehicle) o;
+
+        return !(license != null ? !license.equals(vehicle.license) : vehicle.license != null);
+    }
+
+    @Override
+    public int hashCode() {
+        return license != null ? license.hashCode() : 0;
+    }
 }

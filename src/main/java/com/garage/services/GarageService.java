@@ -51,7 +51,7 @@ public class GarageService {
     public ParkingLot checkIn(Vehicle vehicle, Garage garage) throws NoParkingLotsAreAvailableException, VehicleAlreadyInGarageException, GarageNotFoundException {
         ParkingLot parkingLot;
 
-        if (findVehicle(vehicle) != null) {
+        if (vehicleRepository.findByLicense(vehicle.getLicense()) != null) {
             throw new VehicleAlreadyInGarageException();
         }
         parkingLot = getAvailableParkingLots(garage).get(0);
@@ -61,11 +61,13 @@ public class GarageService {
     }
 
     public List<ParkingLot> getAvailableParkingLots(Garage garage) throws NoParkingLotsAreAvailableException, GarageNotFoundException {
-        List<Level> levels = garageRepository.getAllLevelsOrderByNumberASC(findGarage(garage));
         List<ParkingLot> emptyParkingLots = new ArrayList<>();
+        List<Level> levels;
 
+        garage = findGarage(garage);
+        levels = garageRepository.getAllLevelsOrderByNumberASC(garage);
         for (Level level : levels) {
-            List<ParkingLot> parkingLots = level.getParkingLots();
+            List<ParkingLot> parkingLots = level.getOccupiedParkingLots();
 
             for (int i = 1; i <= garage.getLotsOnLevel(); i++) {
                 ParkingLot parkingLot = new ParkingLot(i, level);
@@ -117,7 +119,11 @@ public class GarageService {
         return garage;
     }
 
-    private Vehicle findVehicle(Vehicle vehicle) {
-        return vehicleRepository.findByLicense(vehicle.getLicense());
+    public Vehicle findVehicle(Vehicle vehicle) throws VehicleNotFoundException {
+        vehicle = vehicleRepository.findByLicense(vehicle.getLicense());
+        if (vehicle == null) {
+            throw new VehicleNotFoundException();
+        }
+        return vehicle;
     }
 }

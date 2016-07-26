@@ -6,12 +6,14 @@ package com.garage.dto;
  */
 public class ResponseDTO<T> {
 
-    private String status;
-    private T response;
+    public static final String STATUS_COMPLETE = "complete";
 
-    public ResponseDTO(String status, T response) {
+    private String status;
+    private T message;
+
+    public ResponseDTO(String status, T message) {
         this.status = status;
-        this.response = response;
+        this.message = message;
     }
 
     public String getStatus() {
@@ -22,11 +24,15 @@ public class ResponseDTO<T> {
         this.status = status;
     }
 
-    public T getResponse() {
-        return response;
+    public T getMessage() {
+        return message;
     }
 
-    public void setResponse(T response) {
-        this.response = response;
+    public void setMessage(T message) {
+        this.message = message;
+    }
+
+    public static <T> ResponseDTO getResponseComplete(T object) {
+        return new ResponseDTO<>(STATUS_COMPLETE, object);
     }
 }

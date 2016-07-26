@@ -6,7 +6,7 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * @author Ruslan Yaniuk
- * @date July 2015
+ * @date July 2016
  */
 public interface Constants {
 

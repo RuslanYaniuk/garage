@@ -1,40 +1,29 @@
 package com.garage.dto;
 
+import com.garage.models.Garage;
+
 import javax.validation.constraints.NotNull;
 
 /**
  * @author Ruslan Yaniuk
  * @date July 2016
  */
-public class GarageConfigDTO {
-
-    @NotNull
-    private Integer numberOfLevels;
-
-    @NotNull
-    private Integer lotsOnLevel;
+public class GarageConfigDTO extends GarageCreateDTO {
 
     public GarageConfigDTO() {
+        super();
     }
 
-    public GarageConfigDTO(Integer numberOfLevels, Integer lotsOnLevel) {
-        this.numberOfLevels = numberOfLevels;
-        this.lotsOnLevel = lotsOnLevel;
+    public GarageConfigDTO(Garage garage) {
+        super.garage = garage;
     }
 
-    public Integer getNumberOfLevels() {
-        return numberOfLevels;
+    @NotNull
+    public Long getId() {
+        return garage.getId();
     }
 
-    public void setNumberOfLevels(Integer numberOfLevels) {
-        this.numberOfLevels = numberOfLevels;
-    }
-
-    public Integer getLotsOnLevel() {
-        return lotsOnLevel;
-    }
-
-    public void setLotsOnLevel(Integer lotsOnLevel) {
-        this.lotsOnLevel = lotsOnLevel;
+    public void setId(Long id) {
+        this.garage.setId(id);
     }
 }

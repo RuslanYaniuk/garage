@@ -6,7 +6,7 @@ import org.dbunit.database.DatabaseConfig;
 import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;
 import org.dbunit.dataset.IDataSet;
-import org.dbunit.ext.mysql.MySqlDataTypeFactory;
+import org.dbunit.ext.h2.H2DataTypeFactory;
 import org.dbunit.operation.DatabaseOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceUtils;
@@ -43,7 +43,7 @@ public class DBUnitHelper {
         Connection con = DataSourceUtils.getConnection(dataSource);
 
         dbUnitCon = new DatabaseConnection(con);
-        dbUnitCon.getConfig().setProperty(DatabaseConfig.PROPERTY_DATATYPE_FACTORY, new MySqlDataTypeFactory());
+        dbUnitCon.getConfig().setProperty(DatabaseConfig.PROPERTY_DATATYPE_FACTORY, new H2DataTypeFactory());
 
         garages = YamlDataSetLoader.load(DBUNIT_DATASETS + "garages.yml");
         levels = YamlDataSetLoader.load(DBUNIT_DATASETS + "levels.yml");

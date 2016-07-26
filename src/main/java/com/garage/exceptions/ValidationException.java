@@ -4,7 +4,7 @@ import org.springframework.validation.Errors;
 
 /**
  * @author Ruslan Yaniuk
- * @date October 2015
+ * @date July 2016
  */
 public class ValidationException extends RuntimeException {
 

@@ -1,4 +1,4 @@
-package com.garage.test.utils;
+package com.garage.test.utils.fixtures;
 
 import com.garage.models.Vehicle;
 import com.garage.models.VehicleType;
@@ -7,7 +7,7 @@ import com.garage.models.VehicleType;
  * @author Ruslan Yaniuk
  * @date July 2016
  */
-public class CarFixtures {
+public class VehicleFixtures {
 
     public static Vehicle getNewCar() {
         return new Vehicle("BC-998877", VehicleType.CAR);

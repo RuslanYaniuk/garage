@@ -1,4 +1,4 @@
-package com.garage.test.utils;
+package com.garage.test.utils.fixtures;
 
 import com.garage.models.ParkingLot;
 

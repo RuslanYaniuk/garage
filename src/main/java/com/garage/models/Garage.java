@@ -1,7 +1,5 @@
 package com.garage.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -24,7 +22,6 @@ public class Garage implements Serializable {
 
     private Integer lotsOnLevel;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "garage")
     private List<Level> levels = new ArrayList<>();
 

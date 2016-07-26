@@ -24,7 +24,7 @@ public class Level implements Serializable {
     private Garage garage;
 
     @OneToMany(mappedBy = "level", fetch = FetchType.EAGER)
-    private List<ParkingLot> parkingLots = new ArrayList<>();
+    private List<ParkingLot> occupiedParkingLots = new ArrayList<>();
 
     public Level() {
     }
@@ -58,12 +58,12 @@ public class Level implements Serializable {
         this.garage = garage;
     }
 
-    public List<ParkingLot> getParkingLots() {
-        return parkingLots;
+    public List<ParkingLot> getOccupiedParkingLots() {
+        return occupiedParkingLots;
     }
 
-    public void setParkingLots(List<ParkingLot> parkingLots) {
-        this.parkingLots = parkingLots;
+    public void setOccupiedParkingLots(List<ParkingLot> occupiedParkingLots) {
+        this.occupiedParkingLots = occupiedParkingLots;
     }
 
     @Override

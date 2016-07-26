@@ -15,9 +15,9 @@ import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.List;
 
-import static com.garage.test.utils.CarFixtures.getCar1InGarage1Level1;
-import static com.garage.test.utils.CarFixtures.getNewCar;
-import static com.garage.test.utils.GarageFixtures.*;
+import static com.garage.test.utils.fixtures.GarageFixtures.*;
+import static com.garage.test.utils.fixtures.VehicleFixtures.getCar1InGarage1Level1;
+import static com.garage.test.utils.fixtures.VehicleFixtures.getNewCar;
 import static junit.framework.Assert.assertNotNull;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.junit.MatcherAssert.assertThat;
@@ -94,7 +94,7 @@ public class GarageServiceTests extends AbstractServiceTest {
 
     @Test(expected = NoParkingLotsAreAvailableException.class)
     public void getEmptyParkingLots_filledGarage_exceptionThrown() throws NoParkingLotsAreAvailableException, GarageNotFoundException {
-        garageService.getAvailableParkingLots(getFilledGarage());
+        garageService.getAvailableParkingLots(getFullGarage());
     }
 
     @Test
@@ -139,5 +139,23 @@ public class GarageServiceTests extends AbstractServiceTest {
     @Test(expected = GarageConfigurationException.class)
     public void applyConfiguration_invalidConfig_exceptionThrown() throws GarageConfigurationException {
         garageService.applyConfiguration(getNewGarage(), -1, 0);
+    }
+
+    @Test
+    public void findVehicle_vehicleInGarage_vehicleReturned() throws VehicleNotFoundException {
+        Vehicle carInGarage = getCar1InGarage1Level1();
+        Vehicle vehicle = garageService.findVehicle(carInGarage);
+
+        assertThat(vehicle.getId(), is(carInGarage.getId()));
+        assertThat(vehicle.getLicense(), is(carInGarage.getLicense()));
+        assertThat(vehicle.getType(), is(carInGarage.getType()));
+    }
+
+    @Test(expected = VehicleNotFoundException.class)
+    public void findVehicle_vehicleNotInGarage_exceptionThrown() throws VehicleNotFoundException {
+        Vehicle newCar = getNewCar();
+
+        newCar.setId(-456l);
+        garageService.findVehicle(newCar);
     }
 }

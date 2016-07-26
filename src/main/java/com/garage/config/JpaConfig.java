@@ -21,7 +21,7 @@ import static com.garage.config.ApplicationConfig.*;
 
 /**
  * @author Ruslan Yaniuk
- * @date July 2015
+ * @date July 2016
  */
 @Configuration
 @EnableTransactionManagement

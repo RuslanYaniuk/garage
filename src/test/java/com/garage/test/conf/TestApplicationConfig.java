@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @author Ruslan Yaniuk
- * @date June 2016
+ * @date July 2016
  */
 @Configuration
 @ComponentScan("com.garage.test.utils")

@@ -12,7 +12,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 /**
  * @author Ruslan Yaniuk
- * @date September 2015
+ * @date July 2016
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration

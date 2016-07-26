@@ -1,11 +1,11 @@
 package com.garage.test.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.springtestdbunit.DbUnitTestExecutionListener;
-import com.garage.config.WebConfig;
 import com.garage.config.JpaConfig;
+import com.garage.config.WebConfig;
 import com.garage.test.conf.TestApplicationConfig;
 import com.garage.test.utils.DBUnitHelper;
+import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 
 /**
  * @author Ruslan Yaniuk
- * @date September 2015
+ * @date July 2016
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -43,9 +43,9 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 })
 public abstract class AbstractControllerTest {
 
-    public String APPLICATION_JSON_UTF8 = new MediaType(MediaType.APPLICATION_JSON.getType(),
+    public MediaType MEDIA_TYPE_APPLICATION_JSON_UTF8 = new MediaType(MediaType.APPLICATION_JSON.getType(),
             MediaType.APPLICATION_JSON.getSubtype(),
-            StandardCharsets.UTF_8).toString();
+            StandardCharsets.UTF_8);
 
     @Autowired
     protected WebApplicationContext wac;

@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat;
 
 /**
  * @author Ruslan Yaniuk
- * @date September 2015
+ * @date July 2016
  */
 @Configuration
 @ComponentScan(basePackages = {

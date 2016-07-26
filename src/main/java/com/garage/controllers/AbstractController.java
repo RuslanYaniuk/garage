@@ -1,19 +1,15 @@
 package com.garage.controllers;
 
 import com.garage.config.Constants;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
-import java.util.Locale;
-
-import static org.springframework.http.HttpStatus.*;
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
 /**
  * @author Ruslan Yaniuk
- * @date November 2015
+ * @date July 2016
  */
 @Component
 public abstract class AbstractController {
@@ -27,39 +23,7 @@ public abstract class AbstractController {
         COMMON_HEADERS = HttpHeaders.readOnlyHttpHeaders(httpHeaders);
     }
 
-    public <T> ResponseEntity ok(T body) {
-        return jsonResponse(body, OK);
-    }
-
     public <T> ResponseEntity badRequest(T body) {
-        return jsonResponse(body, BAD_REQUEST);
-    }
-
-    public ResponseEntity messageForbidden(String messageCode, String... messageArgs) {
-        return jsonResponse(FORBIDDEN, messageCode, messageArgs);
-    }
-
-    public ResponseEntity messageInternalServerError(String messageCode, String... messageArgs) {
-        return jsonResponse(INTERNAL_SERVER_ERROR, messageCode, messageArgs);
-    }
-
-    public ResponseEntity messageNotAcceptable(String messageCode, String... messageArgs) {
-        return jsonResponse(NOT_ACCEPTABLE, messageCode, messageArgs);
-    }
-
-    public ResponseEntity messageNotFound(String messageCode, String... messageArgs) {
-        return jsonResponse(NOT_FOUND, messageCode, messageArgs);
-    }
-
-    private ResponseEntity jsonResponse(HttpStatus httpStatus, String messageCode, String... messageArgs) {
-        Locale currentThreadLocale = LocaleContextHolder.getLocale();
-        /*MessageDTO messageDTO = customMessageSource.getMessageDTO(messageCode, currentThreadLocale, messageArgs);
-
-        return jsonResponse(messageDTO, httpStatus);*/
-        return null;
-    }
-
-    private <T> ResponseEntity jsonResponse(T body, HttpStatus httpStatus) {
-        return new ResponseEntity<>(body, COMMON_HEADERS, httpStatus);
+        return new ResponseEntity<>(body, COMMON_HEADERS, BAD_REQUEST);
     }
 }
